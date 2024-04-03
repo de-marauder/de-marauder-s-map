@@ -1,4 +1,14 @@
-# React State and Props.
+---
+title: "React State and Props."
+seoTitle: "React State vs Props"
+seoDescription: "What are react States and props? State allow isolated updates of web components in react while Props are used to pass data down a react DOM tree."
+datePublished: Fri Oct 28 2022 16:32:24 GMT+0000 (Coordinated Universal Time)
+cuid: cl9spq16e000g09my5lpuhw34
+slug: react-state-and-props
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1665666892088/cHsEQYUDU.png
+tags: reactjs, frontend-development, reacthooks
+
+---
 
 # Introduction
 React is a JavaScript framework which utilizes the concept of the virtual DOM (Document Object Model) to facilitate building reusable and modular web components. Two of its most important features include the concept of state management and props.
