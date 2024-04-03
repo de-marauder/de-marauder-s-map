@@ -1,4 +1,14 @@
-## Getting started with Git and GitHub: How to create a new GitHub repository
+---
+title: "Getting started with Git and GitHub: How to create a new GitHub repository"
+seoTitle: "Git for beginners"
+seoDescription: "Learn how to manage your project with git and github. Create a github repository initialize git and start pushing changes."
+datePublished: Sun Jul 10 2022 06:37:05 GMT+0000 (Coordinated Universal Time)
+cuid: cl5e0y9y0039ununvgtv93nej
+slug: getting-started-with-git-and-github-how-to-create-a-new-github-repository
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1657378835695/U4m9vBgXc.jpeg
+tags: github, git
+
+---
 
 
 # Introduction
