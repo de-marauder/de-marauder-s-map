@@ -1,4 +1,14 @@
-## Handling Asynchronous Operations In JavaScript
+---
+title: "Handling Asynchronous Operations In JavaScript"
+seoTitle: "Handle asynchronous operations in JavaScript"
+seoDescription: "Asynchronicity is important but can be tedious to deal with. Learn how to handle it using callbacks, promises and async await."
+datePublished: Sat Jul 16 2022 20:31:08 GMT+0000 (Coordinated Universal Time)
+cuid: cl5ocggj2027whanv4rr73j5f
+slug: handling-asynchronous-operations-in-javascript
+cover: https://cdn.hashnode.com/res/hashnode/image/unsplash/oZMUrWFHOB4/upload/v1658003636341/OPFBVZKnH.jpeg
+tags: javascript, asynchronous, promises, callbacks
+
+---
 
 
 # Introduction
