@@ -49,7 +49,7 @@ This presents a problem when we want to create virtualized hosts as we need to f
 
 # Container Network Models
 
-The aspect of the container we are particularly interested in in this article is the network namespace. Throughout this article, when references are made to containers, it's most probably network namespaces that are being referred to. 
+The aspect of the container we are particularly interested in in this article is the network namespace. Throughout this article, when references are made to containers, it's most probably network namespaces that are being referred to.
 
 A network namespace provides a separate instance of the network stack and isolates it so that only processes running within that namespace can see it. These processes cannot see or access any other network stack by default.
 
@@ -93,11 +93,11 @@ sudo ip -n container -br -c addr
 
 <details data-node-type="hn-details-summary"><summary>ip netns exec</summary><div data-type="detailsContent">ip netns exec &lt;net-ns-name&gt; &lt;command&gt; allows us to run any command in a specified network namespace</div></details><details data-node-type="hn-details-summary"><summary>ip -n</summary><div data-type="detailsContent">ip -n &lt;net-ns-name&gt; &lt;command&gt; allows us to run ip commands in a given namespace</div></details>
 
-You’ll find that there are no interfaces that exist in this namespace which makes sense as it is a plain copy of the network stack without extra configurations. 
+You’ll find that there are no interfaces that exist in this namespace which makes sense as it is a plain copy of the network stack without extra configurations.
 
 If you run `ifconfig` or `ip addr` in the default namespace, you might observe that there are a couple of interfaces depending on the host’s configuration:
 
-* a loopback interface (`lo` aka `localhost`), 
+* a loopback interface (`lo` aka `localhost`),
     
 * a WLAN interface for WiFi (looks like `wlp0s20f3`)
     
@@ -194,7 +194,7 @@ sudo iptables -I FORWARD -o veth0 -i eth0 -j ACCEPT
 <div data-node-type="callout-text">Run these commands preferably on a disposable VM. To avoid messing up previously existing rules.</div>
 </div>
 
-The first command sets a NAT (Network Address Translation) rule to route network packets from the source `10.0.0.0/24` to any interface that isn’t `veth0` and mask the traffic behind an internet gateway address as it exits the host. We also need to set forwarding rules to tell the veth0 interface to forward outbound traffic to the eth0 interface for egress and vice versa for ingress. 
+The first command sets a NAT (Network Address Translation) rule to route network packets from the source `10.0.0.0/24` to any interface that isn’t `veth0` and mask the traffic behind an internet gateway address as it exits the host. We also need to set forwarding rules to tell the veth0 interface to forward outbound traffic to the eth0 interface for egress and vice versa for ingress.
 
 With that, we can get to the internet.
 
@@ -206,7 +206,7 @@ That’s it for a single container single machine configuration.
 
 Let’s take this a step further. We might want to run a 3-tier application with each service having its own container and all of them should be able to interact freely with each other and the internet.
 
-Let’s tackle an example demo of how we would achieve this. We would be doing basically the same thing as in the last example but we would be making two network namespaces and connecting them via a Linux bridge that will expose them to the host from where we can then route outbound traffic to the internet. 
+Let’s tackle an example demo of how we would achieve this. We would be doing basically the same thing as in the last example but we would be making two network namespaces and connecting them via a Linux bridge that will expose them to the host from where we can then route outbound traffic to the internet.
 
 ![](https://lh7-us.googleusercontent.com/73GpLCcqmrWNzOGegPLCrns2iB6KlEhFKLxpgSiMEzpH2It-g1KQutelK7uvr0OzHE37ssEQusLuxymPK-Y5-_IzxHcGyEdYD-OMrPBeqKTKzRv73Do4sICGEJbDFagFVzQgXznzF-tADq3Phkyb0vI align="left")
 
@@ -234,7 +234,7 @@ sudo ip link set dev veth_2 netns ns2
 
 **Step 4**: Assign IP addresses to the interface
 
-It’s advisable to make use of an IP address from a particular subnet say `10.0.0.0/24` just to keep things simple and avoid complicated routing rules. This way when we assign IP addresses to the interfaces, the gateway address for the interfaces remains the same while the assigned IP becomes the IP address without the subnet mask. In this case, for the bridge `br0`, we have 10.0.0.1 as the gateway address for the bridge while the subnet remains the same `10.0.0.0/24`. Since the gateway is the same, we won’t run into issues with our route tables and iptables configuration. If you are interested in understanding how subnetting works you can find more information [here](mailto:ecoonlineglobal@gmail.com) 
+It’s advisable to make use of an IP address from a particular subnet say `10.0.0.0/24` just to keep things simple and avoid complicated routing rules. This way when we assign IP addresses to the interfaces, the gateway address for the interfaces remains the same while the assigned IP becomes the IP address without the subnet mask. In this case, for the bridge `br0`, we have 10.0.0.1 as the gateway address for the bridge while the subnet remains the same `10.0.0.0/24`. Since the gateway is the same, we won’t run into issues with our route tables and iptables configuration. If you are interested in understanding how subnetting works you can find more information [here](mailto:ecoonlineglobal@gmail.com)
 
 ```bash
 sudo ip addr add 10.0.0.1/24 dev br0
@@ -302,7 +302,7 @@ This type of behavior is usually achieved by using tools such as docker swarm, E
 
 ![](https://lh7-us.googleusercontent.com/beaxh0jRMo6NpDmSVnyWzpA87_rhZpyIO4wvS4g7ojlsrE8EM-yxuRkbTfpXP4YGgk77ei86x8fYa-D-Fp5UAzafRfzHG4cIIP21BfVWKSLIbb2MR8KAhAdm3R1FRvQEKj2u0RF23iEMjOvXKXoUgJc align="left")
 
-For this setup, we could create a duplicate copy of the example in a multi-container single-host. Of course, the copy would be on a different host or VM. The difference here would be that both hosts or VMs have to be connected by a layer 2 network device, a switch. This will allow the sending of packets from one host directly to the other. You’d just have to set up some extra routing rules to let the kernel know how to process calls to container IP networks in the different connected hosts. 
+For this setup, we could create a duplicate copy of the example in a multi-container single-host. Of course, the copy would be on a different host or VM. The difference here would be that both hosts or VMs have to be connected by a layer 2 network device, a switch. This will allow the sending of packets from one host directly to the other. You’d just have to set up some extra routing rules to let the kernel know how to process calls to container IP networks in the different connected hosts.
 
 So for example, if you had host A and host B each with the same configuration as in the previously discussed example save for the subnet range of the container networks. You can route all requests to the container networks in host B coming from host A to the ethernet gateway interface (usually `eth0`) which will send it to the switch which releases it to host B and to its destination container network.
 
@@ -328,9 +328,11 @@ If you’d like to learn more about this topic, check out these materials:
 
 * [Docker networking docs](https://docs.docker.com/network/)
     
-* [Software Networking and Interfaces on Linux by Matt Turner](https://www.youtube.com/watch?v=EnAZB8GI97c&list=PL6US9lsaI2DPzPxfqIjllnlB5wNjKHcV3&index=4&ab_channel=MattTurner) 
+* [Software Networking and Interfaces on Linux by Matt Turner](https://www.youtube.com/watch?v=EnAZB8GI97c&list=PL6US9lsaI2DPzPxfqIjllnlB5wNjKHcV3&index=4&ab_channel=MattTurner)
     
-* [Container Networking from Scratch by Kristen Jacobs](https://www.youtube.com/watch?v=6v_BDHIgOY8&list=PL6US9lsaI2DPzPxfqIjllnlB5wNjKHcV3&index=9&ab_channel=CNCF%5BCloudNativeComputingFoundation%5D) 
+* [Container Networking from Scratch by Kristen Jacobs](https://www.youtube.com/watch?v=6v_BDHIgOY8&list=PL6US9lsaI2DPzPxfqIjllnlB5wNjKHcV3&index=9&ab_channel=CNCF%5BCloudNativeComputingFoundation%5D)
     
 
-Thanks for reading. Till we meet again, cheers!
+Thanks for reading. Cheers!
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1712943056600/ce56c80a-a5a2-4237-b9b7-e8e5a69b497a.png align="center")
