@@ -4,7 +4,7 @@ seoTitle: "Multi-Region Kubernetes Deployments With ArgoCD"
 seoDescription: "ArgoCD is a gitops tool that helps to facilitate continuous deployments to kubernetes clusters. Let's explore how to use it for multi-cluster multi-region"
 datePublished: Thu Jun 27 2024 16:16:50 GMT+0000 (Coordinated Universal Time)
 cuid: clxxgvxl1000i09l6gdwxdi8c
-slug: deploying-applications-on-kubernetes-in-multiple-regions
+slug: multi-region-kubernetes-deployments-with-argocd
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1719504997508/10ed89fe-c8fe-486a-b5ac-18647b396d5f.png
 ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1719504967645/dd5311e3-62ee-4e99-8514-70af622f5eb5.png
 tags: continuous-deployment, kubernetes, consul, argocd, hashicorp-vault
