@@ -5,8 +5,8 @@ seoDescription: "Multi-region deployments can be done with Terragrunt to improve
 datePublished: Sun Jun 16 2024 11:07:30 GMT+0000 (Coordinated Universal Time)
 cuid: clxhfzrgk000409jq5mfaco4w
 slug: multi-region-kubernetes-cluster-deployments-with-terragrunt
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1718533311232/cf5afa02-046d-4c7f-bc65-da1b5ea0045c.png
-ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1718535817005/2bfba87c-1fbb-4ec6-a863-7e311b6acae9.png
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1719505189769/d7a8fbb9-6f97-425b-997d-ba1404ea2a44.png
+ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1719505209608/610eb46a-fe5d-4cf0-aa14-939db42ac579.png
 tags: kubernetes, terraform, eks, gitops, argocd, terragrunt
 
 ---
