@@ -1,6 +1,6 @@
 ---
-title: "Deploying Applications on Kubernetes in multiple regions"
-seoTitle: "Deploying Applications on Kubernetes in multiple regions"
+title: "Multi-Region Kubernetes Deployments With ArgoCD"
+seoTitle: "Multi-Region Kubernetes Deployments With ArgoCD"
 seoDescription: "ArgoCD is a gitops tool that helps to facilitate continuous deployments to kubernetes clusters. Let's explore how to use it for multi-cluster multi-region"
 datePublished: Thu Jun 27 2024 16:16:50 GMT+0000 (Coordinated Universal Time)
 cuid: clxxgvxl1000i09l6gdwxdi8c
